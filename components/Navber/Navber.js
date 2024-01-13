@@ -43,8 +43,8 @@ function Navbar() {
 
       <div className="flex items-center gap-2.5">
         <img
-          loading="lazy"
-          src="/b.png"
+          loading=""
+          src="/s.png"
           className="aspect-square object-contain w-12 h-12 overflow-hidden"
           alt="Search Icon"
         />
