@@ -7,7 +7,6 @@ import Sidebar from '../components/Dashboard/Sidebar';
 import RecentActivity from '../components/Dashboard/RecentActivity';
 import SystemHealth from '../components/Dashboard/SystemHealth';
 import Announcements from '../components/Dashboard/Announcements';
-import QuestionCreate from '@/components/Dashboard/Create/QuestionCreate';
 
 const AdminDashboard = () => {
   // Placeholder data for widgets, activity log, system health, and announcements
@@ -69,7 +68,7 @@ const AdminDashboard = () => {
         <div className="mt-8">
           {/* AdminPanel Component */}
           <AdminPanel />
-          <QuestionCreate/>
+         
         </div>
       </div>
     </div>
