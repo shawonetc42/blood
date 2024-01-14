@@ -6,6 +6,7 @@ import Question from './Question'
 import Event from './Event'
 import People from './People'
 import Photo from './Photo'
+import About from './About'
 
 function Add1() {
   return (
@@ -16,6 +17,7 @@ function Add1() {
         {/* <AnyQuestion/> */}
         {/* <Event/> */}
         <People/>
+        <About/>
         {/* <Photo/> */}
     </div>
   )
