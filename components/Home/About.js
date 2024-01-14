@@ -3,8 +3,8 @@ import React from 'react'
 function About() {
   return (
     <div> 
-        <div className='flex font-bold justify-center mt-2'>যোগাযোগ</div>
-         <div className="border flex max-w-[307px] flex-col items-stretch ml-96 px-5 py-6 rounded-2xl border-solid border-neutral-300 max-md:max-w-[422px] max-md:ml-28 max-sm:ml-0">
+    <div className='flex font-bold justify-center mt-2'>যোগাযোগ</div>
+         <div className="border flex max-w-[1200px] flex-col items-stretch ml-96 px-5 py-6 rounded-2xl border-solid border-neutral-300 max-md:max-w-[422px] max-md:ml-28 max-sm:ml-0">
       <div className="flex justify-between gap-4 items-start">
         <img
           loading="lazy"
@@ -26,8 +26,7 @@ function About() {
               className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
             />
           01824250139
-          <br/>
-          provatisecchairoktodankendro@gmail.com
+          
           </div>
         </span>
       </div>
