@@ -7,7 +7,7 @@ function People() {
       Testimonials
     </div>
     <div className="justify-center text-neutral-950 text-center text-4xl font-bold leading-10 self-center whitespace-nowrap mt-8">
-      What Thinks Our Community
+      What Thinks Our <br/> Community
     </div>
     <div className="self-center flex w-44 max-w-full items-stretch gap-2 mt-11 max-md:mt-10">
       <img
