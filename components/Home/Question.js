@@ -7,13 +7,16 @@ function Question() {
       
     <span className="flex flex-col items-stretch px-5 max-md:max-w-full">
     <div className="justify-center text-red-600 text-4xl font-bold leading-10 max-md:max-w-full">
-      Any Questions
+      যে কোন প্রশ্ন?
     </div>
-    <div className="justify-center text-neutral-950 text-base leading-7 mt-4 max-md:max-w-full">
-      When deciding which charity to donate to, it's important to do your
-      search and find one that aligns with
-      <br />
-      your values and interests.
+    <div className="justify-center  text-neutral-950 text-base leading-7 mt-4 max-md:max-w-full">
+      <div className='font-bold'>
+      কেনো রক্ত দান?
+      </div>
+      <div>
+        
+      রক্ত দানের মাধ্যমে আপনি কোনও জীবন বাঁচাতে সাহায্য করতে পারেন। রক্তদান করার মাধ্যমে আপনি অন্যের জীবন বাঁচাতে মাধ্যম হিসেবে উঠতে পারেন এবং কাউকে অপূর্ব উপহার দিতে পারেন।
+      </div>
     </div>
   </span>
           

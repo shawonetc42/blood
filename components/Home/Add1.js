@@ -10,13 +10,13 @@ import Photo from './Photo'
 function Add1() {
   return (
     <div>
-        <MySlider/>
+        {/* <MySlider/> */}
         <Find/>
         <Question/>
-        <AnyQuestion/>
-        <Event/>
+        {/* <AnyQuestion/> */}
+        {/* <Event/> */}
         <People/>
-        <Photo/>
+        {/* <Photo/> */}
     </div>
   )
 }

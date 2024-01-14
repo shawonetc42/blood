@@ -9,10 +9,10 @@ function Find() {
           
     <span className="flex flex-col items-stretch px-5">
       <div className="justify-center text-red-600 text-center text-xl font-semibold leading-8 capitalize self-center whitespace-nowrap">
-        In urgent cases
+      "Give the gift of life: <br/> Donate blood, save a life."
       </div>
       <div className="justify-center text-neutral-950 text-center text-4xl font-bold leading-10 self-center mt-7 max-md:max-w-full">
-        The best way is to find yourself
+      ||একের রক্তে অন্যের প্রাণ,বাঁচবে রোগী হাসবে প্রাণ|||
       </div>
       <div className="w-full mt-12 max-md:max-w-full max-md:mt-10">
         <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
@@ -20,13 +20,13 @@ function Find() {
             <div className="flex-col overflow-hidden relative flex min-h-[440px] grow items-center pl-8 pr-20 py-11 max-md:max-w-full max-md:px-5">
               <img
                 loading="lazy"
-                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e1cf8af47a7ca716b3b9abcf06a3e370b17839671b998c0c12b5798fc9d66b19?apiKey=4347c25cbbc84e04bdff1e95b941b3c7&"
+                srcSet="f.jpg"
                 className="absolute h-full w-full object-cover object-center inset-0"
               />
               <div className="relative flex w-[210px] max-w-full justify-between gap-5 mt-52 self-start items-start max-md:mt-10">
                 <span className="flex grow basis-[0%] flex-col items-end">
                   <div className="justify-center text-yellow-400 text-base leading-6 whitespace-nowrap">
-                    Education
+                    Jessore
                   </div>
                   <img
                     loading="lazy"
@@ -36,7 +36,7 @@ function Find() {
                 </span>
                 <span className="self-stretch flex grow basis-[0%] flex-col items-end">
                   <div className="justify-center text-white text-base leading-6 whitespace-nowrap">
-                    Africa
+                   Bangladesh
                   </div>
                   <img
                     loading="lazy"
@@ -66,18 +66,16 @@ function Find() {
                   className="aspect-square object-contain object-center w-4 overflow-hidden shrink-0 max-w-full"
                 />
                 <div className="justify-center text-white text-base leading-6 grow whitespace-nowrap">
-                  652 Days Remaining
+                  365 Days Everywhare
                 </div>
               </span>
               <div className="justify-center text-white text-center text-xl font-bold leading-8 max-w-[250px] mt-5">
-                The Universal Hands-free
-                <br />
-                lighting Solution
+              রক্তদাতা হওয়ার উপায়:
+                
               </div>
               <div className="justify-center text-emerald-200 text-center text-base leading-6 self-stretch mt-6">
-                Fund programs that help children escape
-                <br />
-                poverty by providing vocational training.
+              যদি আপনি রক্তদাতা হতে আগ্রহী হন, তবে যত্নশীলভাবে রক্তদান হতে প্রয়োজনীয় তথ্য সংগ্রহ করুন।
+               
               </div>
               <div className="items-stretch bg-emerald-100 self-stretch flex flex-col justify-center mt-5 rounded-md">
                 <span className="justify-end text-white text-center text-lg font-semibold leading-7 bg-yellow-400 pl-16 pb-3.5 rounded-md items-end max-md:pl-5">
@@ -109,10 +107,10 @@ function Find() {
               </div>
               <span className="justify-between items-stretch bg-white flex gap-5 mt-9 pr-7 rounded-xl max-md:pr-5">
                 <span className="justify-center text-neutral-950 text-base font-bold leading-5 uppercase whitespace-nowrap items-stretch bg-yellow-400 grow px-7 py-5 max-md:px-5">
-                  Donate
+                  ডোনেট
                 </span>
                 <div className="justify-center text-neutral-950 text-base font-bold leading-5 uppercase self-center my-auto">
-                  Details
+                  বিস্তারিত
                 </div>
               </span>
             </span>

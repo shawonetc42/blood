@@ -51,7 +51,7 @@ function Navbar() {
       <div className="flex items-center gap-2.5 md:ml-auto">
         <img
           loading="lazy"
-          src="/s.png"
+          src="/search.png"
           className="aspect-square object-contain w-12 h-12 overflow-hidden"
           alt="Search Icon"
         />

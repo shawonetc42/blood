@@ -38,9 +38,7 @@ function People() {
       className="aspect-[28] object-contain object-center w-7 overflow-hidden self-center max-w-full ml-14 mt-7"
     />
     <div className="justify-center text-stone-500 text-center text-base italic leading-6 self-stretch w-full mt-7 max-md:max-w-full">
-    "Good work speaks for itself. It is a testament to dedication, skill, and a commitment to excellence. <br />
-     When you do good work, you not only make a positive impact on others but also leave a lasting impression   <br />
-     that resonates with the value of your efforts."
+    "রক্তদান একটি মানবিক অবদান, এটি অন্যের জীবন বাঁচাতে সাহায্য করতে পারে। আমি আমার অংশ নিয়ে দেওয়ার জন্য এখানে আছি।"
      
     </div>
     <div className="self-center flex items-stretch justify-between gap-5 mt-8">
