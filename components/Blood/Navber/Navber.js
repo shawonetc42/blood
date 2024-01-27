@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LoginPage from '../../../pages/login';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { HiArrowLeftOnRectangle } from 'react-icons/hi2';
+import Image from 'next/image'; // Import Image from 'next/image'
 
+const USER_IMAGE =
+  'https://res.cloudinary.com/dknvsbuyy/image/upload/v1686314044/1617826370281_30f9a2a96a.jpg';
 function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,6 +15,7 @@ function Navbar() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  const { data: session } = useSession();
 
   const NavLink = ({ href, onClick, children }) => {
     const isActive = router.pathname === href;
@@ -69,14 +75,44 @@ function Navbar() {
             alt="Logo"
           />
         </a>
-
+        <div className="flex gap-4 items-center">
+        {!session ? (
+          <button
+            className=""
+            onClick={() => signIn()}
+          >
+            <span className="bg-[#D02828] text-white text-sm font-bold leading-5 capitalize whitespace-nowrap px-7 py-4 rounded-full self-start">
+          <a href="/login">Log in</a>
+        </span>
+          </button>
+        ) : (
+          <button
+            className="bg-white text-gray-500 p-1 px-3 text-[12px] border-[1px] rounded-full"
+            onClick={() => signOut()}
+          >
+            <span className="hidden sm:block">SIGN OUT</span>
+            <HiArrowLeftOnRectangle className="sm:hidden text-[17px]" />
+          </button>
+        )}
+        {session ? (
+          // Use next/image for user image
+          <Image
+            src={session ? session?.user?.image : USER_IMAGE}
+            alt="user image"
+            className="rounded-full cursor-pointer"
+            onClick={() => router.push('/dashboard')}
+            width={40}
+            height={40}
+          />
+        ) : null}
+      </div>
         <div className="hidden md:flex space-x-2">
           <NavLink href="/" onClick={handleNavLinkClick} className="nav-link">Home</NavLink>
           <NavLink href="/about" onClick={handleNavLinkClick} className="nav-link">About</NavLink>
           <NavLink href="/donation" onClick={handleNavLinkClick} className="nav-link">Donation</NavLink>
           <NavLink href="/dashboard" onClick={handleNavLinkClick} className="nav-link">Dashboard</NavLink>
           <NavLink href="/test" onClick={handleNavLinkClick} className="nav-link">Test</NavLink>
-          <LoginPage/>
+         
         </div>
 
         
@@ -87,7 +123,7 @@ function Navbar() {
           <NavLink href="/" onClick={handleNavLinkClick} className="">Home</NavLink>
           <NavLink href="/create-post" onClick={handleNavLinkClick} className="">Post</NavLink>
           <NavLink href="/test" onClick={handleNavLinkClick} className="">Test</NavLink>
-          <LoginPage/>
+          
           
         </div>
       
