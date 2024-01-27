@@ -92,7 +92,7 @@ export default function Home() {
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="border w-96 p-2 rounded mr-2"
+            className="border w-auto p-2 mx-4 rounded mr-2"
           />
           <button onClick={handleSearch} className="bg-blue-500 text-white mt-3 px-4 py-2 rounded">
             Search

@@ -83,7 +83,7 @@ function Navbar() {
       </div>
 
       
-        <div className="  md:hidden flex -mt-14 ml-40 py-2">
+        <div className="  md:hidden flex  py-2">
           <NavLink href="/" onClick={handleNavLinkClick} className="">Home</NavLink>
           <NavLink href="/create-post" onClick={handleNavLinkClick} className="">Post</NavLink>
           <NavLink href="/test" onClick={handleNavLinkClick} className="">Test</NavLink>

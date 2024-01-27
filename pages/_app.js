@@ -10,7 +10,7 @@ function MyApp({ Component,
     
        <SessionProvider session={session}>
       {/* <Headers/>  */}
-
+  <Navbar/>
   <Component {...pageProps} />
   {/* <Footer/> */}
   </SessionProvider>
