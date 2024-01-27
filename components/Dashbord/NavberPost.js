@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import { HiOutlinePencilSquare,HiArrowLeftOnRectangle } from "react-icons/hi2";
 import { useRouter } from 'next/router';
 const USER_IMAGE='https://res.cloudinary.com/dknvsbuyy/image/upload/v1686314044/1617826370281_30f9a2a96a.jpg'
-function Header() {
+function NavberPost() {
   const router=useRouter();
   const { data: session } = useSession();
   console.log("Session",session)
@@ -12,21 +12,21 @@ function Header() {
     <div className='flex justify-between p-3  border-b-[2px]
     border-green-700'>
         <div className='flex'>
-        <img src="./Images/pro.png" 
+        <img src="" 
         width={120}
-        alt='ninja player logo'
+        alt=''
         className='cursor-pointer w-10 h-15'
         onClick={()=>router.push('/')}
         />
-        <p className='mt-3 font-medium' onClick={()=>router.push('/')}>Portfolio</p>
+        <p className='mt-3 font-medium' onClick={()=>router.push('/')}>Dashbord</p>
         </div>
         <div className='flex gap-4'>
-            {/* <button onClick={()=>router.push('/create-post')} className='bg-green-700 p-1 px-3
+            <button onClick={()=>router.push('/create-post')} className='bg-green-700 p-1 px-3
              text-white rounded-full text-[12px]'>
                 <span className='hidden sm:block'>
                     CREATE POST</span> 
                     <HiOutlinePencilSquare 
-                    className='sm:hidden text-[17px]' /></button> */}
+                    className='sm:hidden text-[17px]' /></button>
             {!session?<button className='bg-white
              text-gray-500 p-1 px-3 text-[12px] border-[1px]
              rounded-full' onClick={()=>signIn()}>
@@ -51,4 +51,4 @@ function Header() {
   )
 }
 
-export default Header
+export default  NavberPost

@@ -1,14 +1,105 @@
-import React from 'react'
-import Add1 from '@/components/Home/Add1'
-import Sliderr from '@/components/Dashboard/Slider/AdminPanel'
+import { useEffect, useState } from 'react';
+import app from '../shared/FirebaseConfig';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  getDoc,
+  updateDoc,
+} from 'firebase/firestore';
+import Posts from '../components/Home/Posts';
 
-function index() {
+export default function Home() {
+  const db = getFirestore(app);
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const getPosts = async (searchQuery = '') => {
+    try {
+      setLoading(true);
+      let q;
+      if (searchQuery) {
+        q = query(collection(db, 'admin'), where('title', '>=', searchTerm));
+      } else {
+        q = collection(db, 'chatgroups');
+      }
+
+      const querySnapshot = await getDocs(q);
+      const postData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setPosts(postData);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSearch = () => {
+    getPosts(searchTerm);
+  };
+
+  const handleLike = async (postId) => {
+    try {
+      const postRef = doc(db, 'chatgroups', postId);
+      const postDoc = await getDoc(postRef);
+
+      if (postDoc.exists()) {
+        const currentLikes = postDoc.data().likes || 0;
+        await updateDoc(postRef, { likes: currentLikes + 1 });
+        // Fetch posts again to update the state
+        getPosts();
+      }
+    } catch (error) {
+      console.error('Error updating likes:', error);
+    }
+  };
+
+  const handleComment = async (postId, newComment) => {
+    try {
+      const postRef = doc(db, 'chatgroups', postId);
+      const postDoc = await getDoc(postRef);
+
+      if (postDoc.exists()) {
+        const currentComments = postDoc.data().comments || [];
+        const updatedComments = [...currentComments, newComment];
+
+        await updateDoc(postRef, { comments: updatedComments });
+        // Fetch posts again to update the state
+        getPosts();
+      }
+    } catch (error) {
+      console.error('Error updating comments:', error);
+    }
+  };
+
   return (
-    <div>
-    
-      <Add1/>
+    <div className='flex items-center justify-center'>
+      <div className="w-[542px]">
+        <div className="mb-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border w-96 p-2 rounded mr-2"
+          />
+          <button onClick={handleSearch} className="bg-blue-500 text-white mt-3 px-4 py-2 rounded">
+            Search
+          </button>
+        </div>
+        <Posts posts={posts} onLike={handleLike} onComment={handleComment} />
+      </div>
     </div>
-  )
+  );
 }
-
-export default index
