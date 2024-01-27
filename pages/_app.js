@@ -1,10 +1,6 @@
 
 import '../styles/globals.css'
 import { SessionProvider } from "next-auth/react"
-import Footer from './../components/bbc/Footer';
-import Headers from '../components/bbc/Header';
-import Header from '../components/Blood/Header';
-import Navber from './../components/Home/Navber';
 import Navbar from '../components/Blood/Navber/Navber';
 
 function MyApp({ Component,  
