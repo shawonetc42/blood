@@ -51,7 +51,9 @@ const Posts = ({ posts, onLike, onComment }) => {
   };
 
   // Sort posts based on the order date in descending order
-  const sortedPosts = posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+   const sortedPosts = [...posts]
+  .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+  .reverse();
 
   return (
     <div className="flex flex-col space-y-4">
