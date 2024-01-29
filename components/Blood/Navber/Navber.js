@@ -18,7 +18,7 @@ function Navber() {
         <div className="flex max-w-screen-xl flex-wrap items-center justify-between mx-auto p-4">
           <Link href="/">
             <p className="flex items-center space-x-3 rtl:space-x-reverse">
-              <Image src="/logo1.png" alt="Flowbite Logo" width={42} height={42} />
+              {/* <Image src="/logo1.png" alt="Flowbite Logo" width={42} height={42} /> */}
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
             </p>
           </Link>
