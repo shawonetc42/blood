@@ -4,7 +4,7 @@ import { HiOutlineXCircle } from 'react-icons/hi'
 function Toast({msg='',closeToast}) {
   return (
     <div className='duration-500 transition-all
-     ease-in-out bg-[#36d399] 
+     ease-in-out bg-red-700
      justify-between flex
       items-center p-4 rounded-md '>
        

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Data from "../../shared/Data";
 import { useSession } from "next-auth/react";
-import app from "./../../shared/FirebaseConfig";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import { getDownloadURL, getStorage, 
-    ref, uploadBytes } from "firebase/storage";
+import app from "../../shared/FirebaseConfig";
 import Toast from "../Toast";
 
 function Form() {
@@ -20,9 +18,12 @@ function Form() {
   // Update inputs state with session user data
   useEffect(() => {
     if (session) {
-      setInputs((values) => ({ ...values, userName: session.user?.name }));
-      setInputs((values) => ({ ...values, userImage: session.user?.image }));
-      setInputs((values) => ({ ...values, email: session.user?.email }));
+      setInputs((values) => ({
+        ...values,
+        userName: session.user?.name,
+        userImage: session.user?.image,
+        email: session.user?.email,
+      }));
     }
   }, [session]);
 
@@ -40,15 +41,21 @@ function Form() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // Handle file upload
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShowToast(true);
 
     // Upload image to Firebase Storage
-    const storageRef = ref(storage, 'ninja-player/' + file?.name);
+    const storageRef = ref(storage, "ninja-player/" + file?.name);
     uploadBytes(storageRef, file).then((snapshot) => {
-      console.log('Uploaded a blob or file!');
+      console.log("Uploaded a blob or file!");
     }).then(resp => {
       // Get download URL of uploaded image
       getDownloadURL(storageRef).then(async (url) => {
@@ -75,52 +82,34 @@ function Form() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          required
-          onChange={handleChange}
-          className="w-full mb-4 border-[1px] p-2 rounded-md"
-        />
-        <textarea
-          name="desc"
-          className="w-full mb-4 outline-blue-400 border-[1px] p-2 rounded-md"
-          required
-          onChange={handleChange}
-          placeholder="Write Description here"
-        />
-        <input
-          type="text"
-          placeholder="Location"
-          name="location"
-          required
-          onChange={handleChange}
-          className="w-full mb-4 border-[1px] p-2 rounded-md"
-        />
-        <select
-          name="game"
-          onChange={handleChange}
-          required
-          className="w-full mb-4 border-[1px] p-2 rounded-md"
-        >
-          <option disabled defaultValue>
-            Select Category
-          </option>
-          {Data.GameList.map((item) => (
-            <option key={item.id}>{item.name}</option>
-          ))}
-        </select>
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          accept="image/gif, image/jpeg, image/png"
-          className="mb-5 border-[1px] w-full"
-        />
+      <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+        <div className="flex items-center justify-between mb-4">
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            required
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label
+            htmlFor="file-upload"
+            className="cursor-pointer bg-gray-200 px-4 py-2 rounded-md text-gray-600 hover:bg-gray-300 ml-4"
+          >
+            Choose Photo
+          </label>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept="image/gif, image/jpeg, image/png"
+            className="hidden"
+            id="file-upload"
+          />
+        </div>
+        {file && <span className="block text-sm mb-2 ml-2">{file.name}</span>}
         <button
           type="submit"
-          className="bg-red-700 w-full p-1 rounded-md text-white"
+          className="w-full bg-red-700 text-white py-2 rounded-md transition duration-300 hover:bg-red-800 focus:outline-none focus:ring focus:bg-red-800"
         >
           Submit
         </button>
