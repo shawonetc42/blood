@@ -85,19 +85,7 @@ export default function Home() {
 
   return (
     <div className='flex items-center justify-center'>
-      <div className="w-[542px]">
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="border w-auto p-2 mx-4 rounded mr-2"
-          />
-          <button onClick={handleSearch} className="bg-blue-500 text-white mt-3 px-4 py-2 rounded">
-            Search
-          </button>
-        </div>
+      <div className="w-[542px] mt-14">
         <Posts posts={posts} onLike={handleLike} onComment={handleComment} />
       </div>
     </div>

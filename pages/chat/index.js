@@ -1,6 +1,8 @@
 // pages/chat.js
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
+import MessagesComponent from './MessagesComponent';
+import Messenger from './msg';
 
 const Chat = () => {
   const { data: session, status } = useSession();
@@ -56,6 +58,14 @@ const Chat = () => {
       {status === 'unauthenticated' && (
         <p>Please sign in to access the chat.</p>
       )}
+      {/* 2 part active list and massenger list  */}
+      <div className='gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0 '>
+        <MessagesComponent/>
+       <div className='w-full '> 
+         <Messenger/>
+       </div>
+      </div>
+
     </div>
   );
 };
