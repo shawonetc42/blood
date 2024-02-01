@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore';
 import LoadingSkeleton from '../data/Skeleton';
 
- export default function bd () {
+ export default function Home() {
   const db = getFirestore(app);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
