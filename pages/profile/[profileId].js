@@ -1,37 +1,61 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link'; // Import Link from Next.js
+import app from '../../shared/FirebaseConfig';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+} from 'firebase/firestore';
 
-const ProfilePage = () => {
+export default function PostDetails() {
   const router = useRouter();
-  const { profileId } = router.query;
+  const { postId } = router.query;
+  const db = getFirestore(app);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Replace 'YOUR_IMAGE_URL' with the actual URL of the image in Firebase
-  const imageUrl = 'YOUR_IMAGE_URL';
+  useEffect(() => {
+    if (postId) {
+      getPost();
+    }
+  }, [postId]);
+
+  const getPost = async () => {
+    try {
+      setLoading(true);
+      const postDoc = await getDoc(doc(db, 'chatgroups', postId));
+      if (postDoc.exists()) {
+        setPost(postDoc.data());
+      } else {
+        console.error('Post not found');
+      }
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!post) {
+    return <p>Post not found</p>;
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-2">
-      <h1 className="text-4xl font-semibold mb-8">Profile Page</h1>
-      <div className="bg-gray-100 p-6 rounded-lg shadow-md w-96">
-        <div className="flex items-center space-x-4">
-          <img
-            src={imageUrl} // Use the imageUrl from Firebase
-            alt="Profile Picture"
-            className="w-16 h-16 rounded-full"
-          />
-          <div>
-            <p className="text-xl font-semibold">{profileId}</p>
-            <p className="text-gray-600">Web Developer</p>
-          </div>
-        </div>
-        <div className="mt-6">
-          <p className="text-gray-700">Bio:</p>
-          <p className="text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
+    <div className="container mx-auto px-4 py-8 max-w-screen-md">
+      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+      <div className="bg-white p-4 rounded-lg shadow mb-4">
+        <img src={post.image} alt={post.title} className="w-full h-auto mb-2 rounded-lg" />
+        {/* Link to the user's profile page */}
+        <Link href={`/${post.userName}`}>
+          <p className="text-lg font-semibold mb-2">{post.userName}</p>
+        </Link>
+        <p className="text-gray-600">{post.content}</p>
       </div>
     </div>
   );
-};
-
-export default ProfilePage;
+}
