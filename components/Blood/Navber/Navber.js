@@ -24,7 +24,7 @@ function Navber() {
           </Link>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div className='flex gap-4 max-md:ml-2.5 max-sm:'>
-              {session ? <button onClick={() => router.push('/create-post')} className='bg-gray-700 px-3 text-white rounded-full text-[12px]'>
+              {session ? <button onClick={() => router.push('/create-post')} className='bg-red-700 px-3 text-white rounded-full text-[12px]'>
                 <span className='hidden sm:block'>
                   CREATE POST</span>
                 <HiOutlinePencilSquare

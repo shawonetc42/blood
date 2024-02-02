@@ -58,9 +58,6 @@ const Posts = ({ posts, onLike, onComment, onReport }) => {
         <LoadingSkeleton/>
       )}
 
-      {/* Render the Form component to allow creating new posts */}
-      <Form />
-
       {!loading &&
         sortedPosts.map((post, postIndex) => (
           <div key={post.id} className="border p-4 rounded-md bg-white shadow-md">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router"; // Import useRouter hook
 import { useSession } from "next-auth/react";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
@@ -14,6 +15,7 @@ function Form() {
   const { data: session } = useSession();
   const db = getFirestore(app);
   const storage = getStorage(app);
+  const router = useRouter(); // Initialize useRouter hook
 
   // Update inputs state with session user data
   useEffect(() => {
@@ -69,6 +71,8 @@ function Form() {
   // Save post data to Firestore
   const savePost = async () => {
     await setDoc(doc(db, "chatgroups", Date.now().toString()), inputs);
+    // Navigate to home page after successful submission
+    router.push("/");
   };
 
   return (
