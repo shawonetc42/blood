@@ -51,10 +51,7 @@ export default function PostDetails() {
       <Head>
         <title>{post.title}</title> {/* Update title dynamically */}
       </Head>
-      <Link href={`/posts/${post.id}`}>
-  <h2 className="text-lg font-semibold mb-2">{post.title.tyt}</h2>
-</Link>
-
+      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
       <div className="bg-white p-4 rounded-lg shadow mb-4">
         <img src={post.image} alt={post.title} className="w-full h-auto mb-2 rounded-lg" />
         {/* Link to the user's profile page */}

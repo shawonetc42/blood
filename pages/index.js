@@ -11,6 +11,7 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import Posts from '../components/Home/Posts';
+import Head from 'next/head';
 
 export default function Home() {
   const db = getFirestore(app);
@@ -85,6 +86,11 @@ export default function Home() {
 
   return (
     <div className='flex items-center justify-center'>
+    <Head>
+        <title>Home - Your Website Title</title> {/* Update with your website title */}
+        <meta name="description" content="Your website description here." /> {/* Update with your website description */}
+        {/* Add more SEO metadata as needed */}
+      </Head>
       <div className="w-[542px] mt-14">
         <Posts posts={posts} onLike={handleLike} onComment={handleComment} />
       </div>

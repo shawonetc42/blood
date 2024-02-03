@@ -3,6 +3,7 @@ import { initializeApp, getApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import 'firebase/database';
+import {getDatabase} from "firebase/database"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,6 +11,7 @@ import 'firebase/database';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDSvetzdKTKLeSHhN2UeMOQPAjDwRpj1zQ",
+  databaseURL: "https://bdjobs-d0441-default-rtdb.asia-southeast1.firebasedatabase.app",
   authDomain: "bdjobs-d0441.firebaseapp.com",
   projectId: "bdjobs-d0441",
   storageBucket: "bdjobs-d0441.appspot.com",
@@ -21,6 +23,7 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore();
 const storage = getStorage();
+const realdb = getDatabase();
 
 export default app;
-export { db, storage };
+export { db, storage, realdb };

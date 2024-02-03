@@ -51,12 +51,19 @@ export default function PostDetails() {
       <Head>
         <title>{post.title}</title> {/* Update title dynamically */}
       </Head>
-      <Link href={`/posts/${post.id}`}>
-  <h2 className="text-lg font-semibold mb-2">{post.title.tyt}</h2>
-</Link>
+      {post.title && Array.isArray(post.title) && post.title.map((user, index) => (
+            <div key={index} className="mb-4">
+              <p className="font-bold">{Object.keys(user)[0]}</p>
+              <ul className="list-disc ml-4">
+                {user[Object.keys(user)[0]].map((item, itemIndex) => (
+                  <li key={itemIndex}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
       <div className="bg-white p-4 rounded-lg shadow mb-4">
-        <img src={post.image} alt={post.title} className="w-full h-auto mb-2 rounded-lg" />
+        <img src={post.userImage} alt={post.title} className="w-[40px] h-[40px] mb-2 rounded-lg" />
         {/* Link to the user's profile page */}
         <Link href={`/${post.userName}`}>
           <p className="text-lg font-semibold mb-2">{post.userName}</p>
