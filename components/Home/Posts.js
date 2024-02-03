@@ -64,14 +64,14 @@ const Posts = ({ posts, onLike, onComment, onReport }) => {
             <div className="text-gray-600 mb-2">
               <div className="flex">
                 <img src={post.userImage} alt={post.userName} className="w-8 h-8 rounded-full mr-2" />
-                <Link href={`/profile/${post.userName}`}>
+                <Link href={`/hero/${post.id}`}>
                   <p className="font-semibold">{post.userName}</p>
                 </Link>
               </div>
             </div>
-
+             
             <Link href={`/posts/${post.id}`}>
-              <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
+              <h2 className="text-lg font-semibold mb-2">{post.title.toString()}</h2>
             </Link>
             {post.image ? (
               <img src={post.image} alt={post.title} className="w-full h-48 object-cover rounded" />
@@ -98,6 +98,27 @@ const Posts = ({ posts, onLike, onComment, onReport }) => {
               toggleReplyForm={toggleReplyForm}
               loadMoreComments={loadMoreComments}
             />
+            {post.title && Array.isArray(post.title) && post.title.map((user, index) => (
+            <div key={index} className="mb-4">
+              <p className="font-bold">{Object.keys(user)[0]}</p>
+              <ul className="list-disc ml-4">
+                {user[Object.keys(user)[0]].map((item, itemIndex) => (
+                  <li key={itemIndex}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          {post.bd && Array.isArray(post.bd) && post.bd.map((folder, index) => (
+  <div key={index} className="mb-4">
+    <p className="font-bold">bd</p>
+    <ul className="list-disc ml-4">
+      {folder.js.map((item, itemIndex) => (
+        <li key={itemIndex}>{item}</li>
+      ))}
+    </ul>
+  </div>
+))}
+
           </div>
         ))}
     </div>
